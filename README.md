@@ -19,12 +19,11 @@
 ## 💻 วิธีการติดตั้งและใช้งาน (How to Run)
 1. Clone Repository นี้ลงเครื่องของคุณ:
    ```bash
-   git clone [https://github.com/ช](https://github.com/ช)ื่อยูสเซอร์ของคุณ/ชื่อโปรเจค.git
+   git clone [https://github.com/](https://github.com/ชื่อยูสเซอร์ของคุณ/ชื่อโปรเจค.git)
    ติดตั้งไลบรารีที่จำเป็น:
 
-Bash
-pip install -r requirements.txt
-รันแอปพลิเคชัน Streamlit:
-
-Bash
+```bash
+      pip install -r requirements.txt
+      รันแอปพลิเคชัน Streamlit:
+```bash
 streamlit run app.py
