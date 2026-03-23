@@ -13,10 +13,110 @@ from plotly.subplots import make_subplots
 # ==========================================
 st.set_page_config(
     page_title="Bitcoin AI Trading Assistant",
-    page_icon="📈",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# ==========================================
+# 1.1 ฟังก์ชันสลับธีม (Dark/Light Mode)
+# ==========================================
+def toggle_theme():
+    """สร้างปุ่มสลับธีมและใช้งาน"""
+    if 'theme' not in st.session_state:
+        st.session_state.theme = 'light'
+    
+    # ปุ่มสลับธีม
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🌙 Dark Mode" if st.session_state.theme == 'light' else "☀️ Light Mode", 
+                   help="สลับระหว่าง Dark และ Light Mode"):
+            st.session_state.theme = 'dark' if st.session_state.theme == 'light' else 'light'
+            st.rerun()
+    
+    # ใช้ธีมตาม session state
+    if st.session_state.theme == 'dark':
+        st.markdown("""
+        <style>
+        .stApp {
+            background-color: #0E1117;
+            color: #FAFAFA;
+        }
+        .stButton>button {
+            background-color: #262730;
+            color: #FAFAFA;
+            border: 1px solid #404040;
+        }
+        .stSelectbox>div>div>select {
+            background-color: #262730;
+            color: #FAFAFA;
+        }
+        .stSlider>div>div>div {
+            background-color: #262730;
+        }
+        .stNumberInput>div>div>input {
+            background-color: #262730;
+            color: #FAFAFA;
+        }
+        .stDataFrame {
+            background-color: #262730;
+            color: #FAFAFA;
+        }
+        .stAlert {
+            background-color: #262730;
+            color: #FAFAFA;
+        }
+        .stProgress>div>div>div>div {
+            background-color: #262730;
+        }
+        .stMetric {
+            background-color: #262730;
+            color: #FAFAFA;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <style>
+        .stApp {
+            background-color: #FFFFFF;
+            color: #262730;
+        }
+        .stButton>button {
+            background-color: #F0F2F6;
+            color: #262730;
+            border: 1px solid #E0E0E0;
+        }
+        .stSelectbox>div>div>select {
+            background-color: #FFFFFF;
+            color: #262730;
+        }
+        .stSlider>div>div>div {
+            background-color: #F0F2F6;
+        }
+        .stNumberInput>div>div>input {
+            background-color: #FFFFFF;
+            color: #262730;
+        }
+        .stDataFrame {
+            background-color: #FFFFFF;
+            color: #262730;
+        }
+        .stAlert {
+            background-color: #FFFFFF;
+            color: #262730;
+        }
+        .stProgress>div>div>div>div {
+            background-color: #F0F2F6;
+        }
+        .stMetric {
+            background-color: #FFFFFF;
+            color: #262730;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+toggle_theme()
 
 # ==========================================
 # 2. ฟังก์ชันโหลดโมเดล (Cache ไว้จะได้ไม่อืด)
