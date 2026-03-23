@@ -383,7 +383,7 @@ if model is not None and input_valid:
         elif len([a for a in market_analysis if "🔴" in a or "📉" in a or "🛑" in a]) >= 3:
             st.error("⚠️ ภาพรวม: สัญญาณลบเด่นชัด")
         else:
-            st.warning("🔄 ภาพรวม: สัญญายุ่งเฉือน")
+            st.warning("🔄 ภาพรวม: สัญญาณขัดแย้งกัน (Mixed Signals)")
 
     # ------------------------------------------
     # ส่วนที่ 2: กราฟโบนัส Feature Importance (แสดงความโปร)
