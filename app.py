@@ -493,7 +493,7 @@ if model is not None and input_valid:
             total_sum = feat_df['Importance'].sum()
             top_3_percentage = (top_3_sum / total_sum) * 100
             
-            st.metric("📊 3 ปัจัยแรกรวม", f"{top_3_percentage:.1f}%", "ของความสำคัญทั้งหมด")
+            st.metric("📊 3 ปัจจัยแรกรวม", f"{top_3_percentage:.1f}%", "ของความสำคัญทั้งหมด")
             st.metric("🔢 จำนวนปัจจัย", len(feat_df), "ตัว")
             
         # แสดงตารางรายละเอียด
