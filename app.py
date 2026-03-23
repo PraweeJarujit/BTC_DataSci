@@ -30,184 +30,88 @@ def is_mobile():
         return False
 
 # ==========================================
-# 1.2 ฟังก์ชันสลับธีม (Dark/Light Mode)
+# 1.2 บังคับใช้ Dark Mode เท่านั้น
 # ==========================================
-def toggle_theme():
-    """สร้างปุ่มสลับธีมและใช้งาน"""
-    if 'theme' not in st.session_state:
-        st.session_state.theme = 'dark'  # Default to dark mode
-    
-    # ปุ่มสลับธีม
-    if is_mobile():
-        # Mobile layout - ปุ่มเล็กกว่า
-        col1, col2, col3 = st.columns([1, 8, 1])
-        button_text = "🌙" if st.session_state.theme == 'light' else "☀️"
-        with col2:
-            if st.button(button_text, 
-                       help="สลับธีม",
-                       use_container_width=True):
-                st.session_state.theme = 'dark' if st.session_state.theme == 'light' else 'light'
-                st.rerun()
-    else:
-        # Desktop layout
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            if st.button("🌙 Light Mode" if st.session_state.theme == 'dark' else "☀️ Dark Mode", 
-                       help="สลับระหว่าง Dark และ Light Mode"):
-                st.session_state.theme = 'light' if st.session_state.theme == 'dark' else 'dark'
-                st.rerun()
-    
-    # ใช้ธีมตาม session state
-    if st.session_state.theme == 'dark':
-        st.markdown("""
-        <style>
-        .stApp {
-            background-color: #0E1117;
-            color: #FAFAFA;
-        }
-        .stButton>button {
-            background-color: #262730;
-            color: #FAFAFA;
-            border: 1px solid #404040;
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 8px;
-        }
-        .stSelectbox>div>div>select {
-            background-color: #262730;
-            color: #FAFAFA;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        .stSlider>div>div>div {
-            background-color: #262730;
-            border-radius: 8px;
-        }
-        .stNumberInput>div>div>input {
-            background-color: #262730;
-            color: #FAFAFA;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        .stDataFrame {
-            background-color: #262730;
-            color: #FAFAFA;
-            border-radius: 8px;
-        }
-        .stAlert {
-            background-color: #262730;
-            color: #FAFAFA;
-            border-radius: 8px;
-        }
-        .stProgress>div>div>div>div {
-            background-color: #262730;
-            border-radius: 8px;
-        }
-        .stMetric {
-            background-color: #262730;
-            color: #FAFAFA;
-            border-radius: 8px;
-            padding: 16px;
-        }
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .stButton>button {
-                padding: 16px 20px;
-                font-size: 18px;
-                min-height: 48px;
-            }
-            .stSelectbox>div>div>select {
-                padding: 16px;
-                font-size: 16px;
-                min-height: 48px;
-            }
-            .stNumberInput>div>div>input {
-                padding: 16px;
-                font-size: 16px;
-                min-height: 48px;
-            }
-            .stSlider>div>div>div {
-                min-height: 48px;
-            }
-        }
-        </style>
-        """, unsafe_allow_html=True)
-    else:
-        st.markdown("""
-        <style>
-        .stApp {
-            background-color: #FFFFFF;
-            color: #262730;
-        }
-        .stButton>button {
-            background-color: #F0F2F6;
-            color: #262730;
-            border: 1px solid #E0E0E0;
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 8px;
-        }
-        .stSelectbox>div>div>select {
-            background-color: #FFFFFF;
-            color: #262730;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        .stSlider>div>div>div {
-            background-color: #F0F2F6;
-            border-radius: 8px;
-        }
-        .stNumberInput>div>div>input {
-            background-color: #FFFFFF;
-            color: #262730;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        .stDataFrame {
-            background-color: #FFFFFF;
-            color: #262730;
-            border-radius: 8px;
-        }
-        .stAlert {
-            background-color: #FFFFFF;
-            color: #262730;
-            border-radius: 8px;
-        }
-        .stProgress>div>div>div>div {
-            background-color: #F0F2F6;
-            border-radius: 8px;
-        }
-        .stMetric {
-            background-color: #FFFFFF;
-            color: #262730;
-            border-radius: 8px;
-            padding: 16px;
-        }
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .stButton>button {
-                padding: 16px 20px;
-                font-size: 18px;
-                min-height: 48px;
-            }
-            .stSelectbox>div>div>select {
-                padding: 16px;
-                font-size: 16px;
-                min-height: 48px;
-            }
-            .stNumberInput>div>div>input {
-                padding: 16px;
-                font-size: 16px;
-                min-height: 48px;
-            }
-            .stSlider>div>div>div {
-                min-height: 48px;
-            }
-        }
-        </style>
-        """, unsafe_allow_html=True)
-
-toggle_theme()
+st.markdown("""
+<style>
+.stApp {
+    background-color: #0E1117;
+    color: #FAFAFA;
+}
+.stButton>button {
+    background-color: #1f2833;
+    color: #66fcf1;
+    border: 2px solid #66fcf1;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.stButton>button:hover {
+    background-color: #66fcf1;
+    color: #0b0c10;
+    box-shadow: 0 0 10px #66fcf1;
+    transform: translateY(-2px);
+}
+.stSelectbox>div>div>select {
+    background-color: #262730;
+    color: #FAFAFA;
+    padding: 12px;
+    border-radius: 8px;
+}
+.stSlider>div>div>div {
+    background-color: #262730;
+    border-radius: 8px;
+}
+.stNumberInput>div>div>input {
+    background-color: #262730;
+    color: #FAFAFA;
+    padding: 12px;
+    border-radius: 8px;
+}
+.stDataFrame {
+    background-color: #262730;
+    color: #FAFAFA;
+    border-radius: 8px;
+}
+.stAlert {
+    background-color: #262730;
+    color: #FAFAFA;
+    border-radius: 8px;
+}
+.stProgress>div>div>div>div {
+    background-color: #262730;
+    border-radius: 8px;
+}
+.stMetric {
+    background-color: #262730;
+    color: #FAFAFA;
+    border-radius: 8px;
+    padding: 16px;
+}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .stButton>button {
+        padding: 16px 20px;
+        font-size: 18px;
+        min-height: 48px;
+    }
+    .stSelectbox>div>div>select {
+        padding: 16px;
+        font-size: 16px;
+        min-height: 48px;
+    }
+    .stNumberInput>div>div>input {
+        padding: 16px;
+        font-size: 16px;
+        min-height: 48px;
+    }
+    .stSlider>div>div>div {
+        min-height: 48px;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
 
 # ==========================================
 # 2. ฟังก์ชันโหลดโมเดล (Cache ไว้จะได้ไม่อืด)
@@ -235,9 +139,7 @@ def validate_inputs(daily_return, sma_50, sma_200, rsi_14, macd, volatility, vol
     if abs(daily_return) > 0.20:
         errors.append("Daily Return ไม่ควรเกิน ±20% (เปลี่ยนแปลงมากกว่านี้ผิดปกติ)")
     
-    # SMA 50 ต้องมากกว่า SMA 200 (ปกติ)
-    if sma_50 < sma_200:
-        errors.append("SMA 50 ควรมากกว่า SMA 200 (ราคาปัจจุบันควรสูงกว่าราคาเฉลี่ยยาว)")
+    # SMA 50 ไม่จำเป็นต้องมากกว่า SMA 200 (Death Cross เป็นสัญญาณลงที่ถูกต้อง)
     
     # SMA ต้องอยู่ในช่วงที่เป็นเหตุผล (1,000 - 200,000 USD)
     if not (1000 <= sma_50 <= 200000):
@@ -260,11 +162,8 @@ def validate_inputs(daily_return, sma_50, sma_200, rsi_14, macd, volatility, vol
     return errors
 
 # ==========================================
-# 4. ออกแบบแถบด้านข้าง (Sidebar) สำหรับรับ Input
+# 4. ออกแบบแถบด้านข้าง (Sidebar) สำหรับข้อมูลช่วยเหลือ
 # ==========================================
-st.sidebar.header("⚙️ ปรับแต่งค่า Technical Indicators")
-st.sidebar.markdown("กรอกข้อมูลสถานะตลาดปัจจุบัน เพื่อให้ AI ทำนายทิศทางราคาพรุ่งนี้")
-
 # สร้าง Slider และ Number Input สำหรับ 7 Features
 with st.sidebar.expander("📖 คำอธิบาย Technical Indicators"):
     st.markdown("""
@@ -281,26 +180,40 @@ with st.sidebar.expander("📖 คำอธิบาย Technical Indicators"):
     **💰 Trading Volume**: ปริมาณการซื้อขาย (สูง=คนซื้อขายเยอะ, ต่ำ=ซื้อขายน้อย)
     """)
 
-daily_return = st.sidebar.number_input("Daily Return (%)", value=0.50, step=0.1, format="%.2f", help="การเปลี่ยนแปลงราคาในวันนี้ (เช่น +2.5 หรือ -1.8)") / 100
-sma_50 = st.sidebar.number_input("SMA 50 Days (USD)", value=60000.0, step=100.0, format="%.0f", help="ราคาเฉลี่ย 50 วันล่าสุด")
-sma_200 = st.sidebar.number_input("SMA 200 Days (USD)", value=55000.0, step=100.0, format="%.0f", help="ราคาเฉลี่ย 200 วันล่าสุด")
-rsi_14 = st.sidebar.slider("RSI 14 Days", min_value=0.0, max_value=100.0, value=55.0, step=1.0, help="ดัชนีแรงซื้อแรงขาย (30=ขายเกิน, 70=ซื้อเกิน)")
-macd = st.sidebar.number_input("MACD", value=150.0, step=10.0, format="%.2f", help="ความเร็วการเปลี่ยนแปลงราคา (บวก=ขึ้นเร็ว)")
-volatility = st.sidebar.slider("Volatility (High-Low/Open)", min_value=0.0, max_value=0.20, value=0.03, step=0.001, format="%.3f", help="ความผันผวนของราคา (0.01=นิ่ง, 0.10=ผันผวนมาก)")
-volume = st.sidebar.number_input("Trading Volume", value=35000.0, step=1000.0, format="%.0f", help="ปริมาณการซื้อขาย (หน่วย: BTC)")
-
-# ตรวจสอบค่า input
-errors = validate_inputs(daily_return, sma_50, sma_200, rsi_14, macd, volatility, volume)
-
-if errors:
-    st.sidebar.error("⚠️ พบข้อผิดพลาด:")
-    for error in errors:
-        st.sidebar.error(f"• {error}")
-    st.sidebar.warning("กรุณาแก้ไขค่าให้ถูกต้องก่อนทำนาย")
-    input_valid = False
-else:
-    st.sidebar.success("✅ ค่าที่กรอกสมเหตุสมผล")
-    input_valid = True
+with st.sidebar.expander("⚠️ ข้อควรระวังที่สำคัญ (Disclaimer)"):
+    st.error("""
+    ## 🚨 คำเตือนสำคัญก่อนใช้งาน
+    
+    **❌ สิ่งที่แอปนี้ไม่ใช่:**
+    - ❌ ไม่ใช่การการันตีว่าจะได้กำไร 100%
+    - ❌ ไม่ใช่คำแนะนำการลงทุนที่ต้องตามอย่างเคร่งครัด
+    - ❌ ไม่ใช่เครื่องมือทำนายอนาคตที่แม่นยำเสมอไป
+    
+    **✅ สิ่งที่แอปนี้คือ:**
+    - ✅ เครื่องมือช่วยวิเคราะห์ข้อมูลตลาด
+    - ✅ ข้อมูลเพิ่มเติมสำหรับประกอบการตัดสินใจ
+    - ✅ แนวทางในการบริหารความเสี่ยง
+    
+    ## 📊 ความน่าจะเป็น (Probability) คืออะไร?
+    - ค่าเปอร์เซ็นต์ที่แสดงคือ **ความมั่นใจของ AI** อิงจากสถิติในอดีต
+    - เช่น 85% หมายถึง AI มั่นใจ 85% ว่าจะเป็นไปตามที่ทาย
+    - **ไม่ใช่** การการันตีว่าจะถูกต้อง 85%
+    
+    ## 🎯 หลักการใช้งานอย่างปลอดภัย:
+    1. **ใช้เป็นข้อมูลเสริม** อย่าพึ่งพาอย่างเดียว
+    2. **ตั้ง Stop-loss** ทุกครั้งที่เทรด
+    3. **ลงทุนเท่าที่สามารถขาดทุนได้**
+    4. **ศึกษาข้อมูลจากแหล่งอื่น** ประกอบด้วย
+    5. **ไม่ลงทุนเมื่อไม่เข้าใจ** ความเสี่ยงที่เผชิญ
+    
+    ## 📈 ความแม่นยำของโมเดล:
+    - โมเดลนี้ถูกฝึกเพื่อเน้นค่า **Precision** (ลดสัญญาณหลอก)
+    - ยังมีโอกาสทำนายผิดได้ โดยเฉพาะในตลาดผันผวนสูง
+    - ผลการทำนายอาจไม่เหมือนจริงในสถานการณ์พิเศษ (ข่าวใหญ่, เหตุการณ์ไม่คาดคิด)
+    
+    ---
+    **⚠️ การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลก่อนตัดสินใจ**
+    """)
 
 # ==========================================
 # 5. ออกแบบหน้าจอหลัก (Main Dashboard)
@@ -316,6 +229,49 @@ st.markdown("""
 """)
 
 st.divider()
+
+# ==========================================
+# 4.1 ส่วนรับข้อมูลจากผู้ใช้ (Input Section)
+# ==========================================
+st.subheader("📊 ขั้นตอนที่ 1: กรอกข้อมูลตลาดปัจจุบัน (Step 1: Enter Market Data)")
+st.markdown("กรอกข้อมูลสถานะตลาดปัจจุบัน เพื่อให้ AI ทำนายทิศทางราคาพรุ่งนี้")
+
+# สร้าง Grid Layout สำหรับ Input Widgets
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    daily_return = st.number_input("Daily Return (%)", value=0.50, step=0.1, format="%.2f", help="การเปลี่ยนแปลงราคาในวันนี้ (เช่น +2.5 หรือ -1.8)") / 100
+    sma_50 = st.number_input("SMA 50 Days (USD)", value=60000.0, step=100.0, format="%.0f", help="ราคาเฉลี่ย 50 วันล่าสุด")
+    volatility = st.slider("Volatility (High-Low/Open)", min_value=0.0, max_value=0.20, value=0.03, step=0.001, format="%.3f", help="ความผันผวนของราคา (0.01=นิ่ง, 0.10=ผันผวนมาก)")
+
+with col2:
+    sma_200 = st.number_input("SMA 200 Days (USD)", value=55000.0, step=100.0, format="%.0f", help="ราคาเฉลี่ย 200 วันล่าสุด")
+    rsi_14 = st.slider("RSI 14 Days", min_value=0.0, max_value=100.0, value=55.0, step=1.0, help="ดัชนีแรงซื้อแรงขาย (30=ขายเกิน, 70=ซื้อเกิน)")
+    volume = st.number_input("Trading Volume", value=35000.0, step=1000.0, format="%.0f", help="ปริมาณการซื้อขาย (หน่วย: BTC)")
+
+with col3:
+    macd = st.number_input("MACD", value=150.0, step=10.0, format="%.2f", help="ความเร็วการเปลี่ยนแปลงราคา (บวก=ขึ้นเร็ว)")
+
+# แสดงสถานะการตรวจสอบค่า input (แสดงหลังจาก grid layout)
+st.markdown("**สถานะการตรวจสอบ:**")
+errors = validate_inputs(daily_return, sma_50, sma_200, rsi_14, macd, volatility, volume)
+
+if errors:
+    st.error("⚠️ พบข้อผิดพลาด:")
+    for error in errors:
+        st.error(f"• {error}")
+    st.warning("กรุณาแก้ไขค่าให้ถูกต้องก่อนทำนาย")
+    input_valid = False
+else:
+    st.success("✅ ค่าที่กรอกสมเหตุสมผล")
+    input_valid = True
+
+st.divider()
+
+# ==========================================
+# 4.2 ปุ่มทำนาย (CTA Button)
+# ==========================================
+st.subheader("🎯 ขั้นตอนที่ 2: ให้ AI วิเคราะห์ทิศทาง")
 
 # รวมข้อมูล Input เข้าเป็น DataFrame (ชื่อคอลัมน์ต้องเป๊ะเหมือนตอนเทรน)
 input_data = pd.DataFrame({
@@ -336,7 +292,7 @@ if model is not None and input_valid:
     st.markdown("**AI วิเคราะห์ข้อมูลตลาดแล้ว ทายว่าราคาพรุ่งนี้จะ...**")
     
     # ปุ่มทำนายพร้อม loading animation
-    if st.button("🚀 เริ่มทำนาย", use_container_width=True, type="primary"):
+    if st.button("🚀 เริ่มทำนายผลทันที", use_container_width=True, type="primary"):
         # แสดง loading animation
         with st.spinner("🤖 AI กำลังวิเคราะห์ข้อมูล..."):
             # จำลองการทำงาน 2 วินาที
@@ -351,9 +307,13 @@ if model is not None and input_valid:
             prob_down = probabilities[0] * 100
             prob_up = probabilities[1] * 100
             
-            # แสดง success feedback
-            st.success("✅ การทำนายเสร็จสมบูรณ์!")
-            st.balloons()  # แอนิเมชันฉลอง
+            # แสดง success feedback พร้อม animation ที่เหมาะสมกับสถานะตลาด
+            if prediction == 1:
+                st.toast("✅ การทำนายเสร็จสมบูรณ์! (ตลาดกระทิง)", icon="🚀")
+                st.balloons()  # ฉลองฉลองสำหรับตลาดขาขึ้น
+            else:
+                st.toast("✅ การทำนายเสร็จสมบูรณ์! (ฤดูหนาวคริปโต)", icon="❄️")
+                st.snow()  # หิมะสำหรับตลาดขาลง (crypto winter)
             
             # เก็บผลลัพธ์ไว้ใน session state
             st.session_state.prediction_result = {
@@ -636,46 +596,34 @@ if model is not None and input_valid:
         display_df.columns = ['ปัจจัย', 'ค่าความสำคัญ', 'สัดส่วน (%)']
         st.dataframe(display_df, width='stretch', hide_index=True)
         
+        # ------------------------------------------
+        # ส่วนที่ 4: ดาวน์โหลดข้อมูลสรุปผล (Export Section)
+        # ------------------------------------------
+        st.divider()
+        st.subheader("📥 ดาวน์โหลดข้อมูลสรุปผล")
+        
+        # สร้างข้อมูลสรุปสำหรับดาวน์โหลด
+        export_data = input_data.copy()
+        export_data.columns = ['Daily_Return_%', 'SMA_50_USD', 'SMA_200_USD', 'RSI_14', 'MACD', 'Volatility', 'Volume_BTC']
+        export_data['Daily_Return_%'] = export_data['Daily_Return_%'] * 100  # แปลงกลับเป็น %
+        
+        # เพิ่มข้อมูลผลการทำนาย
+        if prediction is not None:
+            export_data['Prediction'] = 'ขาขึ้น' if prediction == 1 else 'ขาลง'
+            export_data['Confidence_%'] = prob_up if prediction == 1 else prob_down
+        
+        csv = export_data.to_csv(index=False).encode('utf-8-sig')
+        
+        st.download_button(
+            label="📥 ดาวน์โหลดข้อมูลสรุปผล (CSV)",
+            data=csv,
+            file_name='btc_prediction_report.csv',
+            mime='text/csv',
+            help="ดาวน์โหลดข้อมูลที่ใช้ในการทำนายและผลลัพธ์"
+        )
+        
     except Exception as e:
         st.warning("โมเดลไม่รองรับการแสดง Feature Importance หรือโครงสร้าง Pipeline ไม่ตรงกัน")
 
 else:
-    st.warning("รอการเชื่อมต่อโมเดล หรือกรุณาแก้ไขข้อผิดพลาดในแถบด้านข้าง...")
-
-# ==========================================
-# 6. ส่วนอธิบายท้ายเพจ
-# ==========================================
-with st.expander("⚠️ ข้อควรระวังที่สำคัญ (Disclaimer)"):
-    st.error("""
-    ## 🚨 คำเตือนสำคัญก่อนใช้งาน
-    
-    **❌ สิ่งที่แอปนี้ไม่ใช่:**
-    - ❌ ไม่ใช่การการันตีว่าจะได้กำไร 100%
-    - ❌ ไม่ใช่คำแนะนำการลงทุนที่ต้องตามอย่างเคร่งครัด
-    - ❌ ไม่ใช่เครื่องมือทำนายอนาคตที่แม่นยำเสมอไป
-    
-    **✅ สิ่งที่แอปนี้คือ:**
-    - ✅ เครื่องมือช่วยวิเคราะห์ข้อมูลตลาด
-    - ✅ ข้อมูลเพิ่มเติมสำหรับประกอบการตัดสินใจ
-    - ✅ แนวทางในการบริหารความเสี่ยง
-    
-    ## 📊 ความน่าจะเป็น (Probability) คืออะไร?
-    - ค่าเปอร์เซ็นต์ที่แสดงคือ **ความมั่นใจของ AI** อิงจากสถิติในอดีต
-    - เช่น 85% หมายถึง AI มั่นใจ 85% ว่าจะเป็นไปตามที่ทาย
-    - **ไม่ใช่** การการันตีว่าจะถูกต้อง 85%
-    
-    ## 🎯 หลักการใช้งานอย่างปลอดภัย:
-    1. **ใช้เป็นข้อมูลเสริม** อย่าพึ่งพาอย่างเดียว
-    2. **ตั้ง Stop-loss** ทุกครั้งที่เทรด
-    3. **ลงทุนเท่าที่สามารถขาดทุนได้**
-    4. **ศึกษาข้อมูลจากแหล่งอื่น** ประกอบด้วย
-    5. **ไม่ลงทุนเมื่อไม่เข้าใจ** ความเสี่ยงที่เผชิญ
-    
-    ## 📈 ความแม่นยำของโมเดล:
-    - โมเดลนี้ถูกฝึกเพื่อเน้นค่า **Precision** (ลดสัญญาณหลอก)
-    - ยังมีโอกาสทำนายผิดได้ โดยเฉพาะในตลาดผันผวนสูง
-    - ผลการทำนายอาจไม่เหมือนจริงในสถานการณ์พิเศษ (ข่าวใหญ่, เหตุการณ์ไม่คาดคิด)
-    
-    ---
-    **⚠️ การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลก่อนตัดสินใจ**
-    """)
+    st.warning("รอการโหลดโมเดล หรือกรุณาแก้ไขตัวเลขในช่องกรอกข้อมูลด้านบนให้ถูกต้องครับ...")
